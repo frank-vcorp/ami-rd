@@ -1,0 +1,38 @@
+name: Deploy Status Site (cPanel)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: progressdashboard
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build status dataset
+        run: npm run sync:dashboard -- --skip-firestore
+
+      - name: Deploy via FTP (cPanel)
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USERNAME }}
+          password: ${{ secrets.CPANEL_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.CPANEL_PORT || '21' }}
+          server-dir: ${{ secrets.CPANEL_TARGET_DIR }}
+          local-dir: status-site
+          dangerous-clean-slate: true
