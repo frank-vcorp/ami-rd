@@ -22,6 +22,7 @@ RD-AMI centraliza la ingesta de estudios clínicos en PDF y automatiza su proces
 ## 3. Principios Integra Evolucionada
 - **Modularidad por capas:** dominio (reglas, folios), aplicación (servicios, APIs), plataforma (infraestructura GCP/Firebase).
 - **Trazabilidad total:** folio Empresa–Paciente–Orden–Estudio–Fecha, auditoría y versiones.
+- **Decisiones documentadas:** Trazabilidad del "porqué" mediante Architecture Decision Records (ADRs) para elecciones técnicas clave.
 - **Aceleradores UI/UX:** Next.js + TypeScript + Tailwind + shadcn/ui + Framer Motion; Expo + NativeWind en etapa móvil.
 - **Política fast-path:** crear/editar sin confirmación; confirmar solo acciones destructivas.
 - **Observabilidad y checklists:** logs estructurados, métricas de IA, checklist de calidad por módulo.
@@ -97,6 +98,13 @@ RD-AMI centraliza la ingesta de estudios clínicos en PDF y automatiza su proces
 - **Infraestructura versionada**: Terraform como IaC asegura que cada recurso GCP tenga historia y validaciones (plan/apply) antes de llegar a producción, habilitando rollbacks seguros y entornos consistentes.
 - **Experiencia local (DevEx)**: el uso del Firebase Local Emulator Suite para Firestore/Auth/Functions, junto con contenedores para servicios auxiliares, permite desarrollar y probar offline, acelerando ciclos y reduciendo costos cloud mientras mantenemos paridad con Staging/Prod.
 - **Evolución móvil planeada**: Expo + NativeWind queda lista para un lector/validador móvil sin rehacer componentes, reforzando la estrategia de aceleradores UI/UX.
+
+### 5.5. Gestión de Configuración
+Para asegurar la flexibilidad y el control sobre el comportamiento del sistema sin necesidad de redesplegar código, la configuración se manejará de la siguiente manera:
+
+- **Configuraciones Dinámicas (en Firestore):** Parámetros que pueden necesitar ajustes frecuentes por parte de los administradores o médicos (ej. umbrales del motor de reglas, catálogos de estudios, textos dinámicos de la UI). Se almacenarán en una colección `config` en Firestore, con una UI de administración para su edición controlada.
+- **Configuraciones Estáticas (en Repositorio):** Parámetros que definen el comportamiento fundamental de la aplicación y cambian con menos frecuencia (ej. configuración de servicios externos, formatos de folio). Se gestionarán en archivos `*.json` o `*.yaml` dentro de un directorio `/config` en el repositorio, asegurando que su versionado y despliegue sigan el flujo de CI/CD.
+- **Secretos y Variables de Entorno:** Se seguirán gestionando a través de `.env` (local) y Secret Manager (GCP), con su correspondiente `env.example` en el repositorio, como ya está establecido.
 ---
 
 ## 6. Modelo de Datos (resumen)
