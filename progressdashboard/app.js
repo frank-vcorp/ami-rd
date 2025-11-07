@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phasesContainer = document.getElementById('phases-container');
     const actionItemsEl = document.getElementById('action-items');
 
-    fetch('data/project_data.json')
+    fetch('/progress-ami/progressdashboard/data/project_data.json')
         .then(response => response.json())
         .then(data => {
             // Actualizar última actualización

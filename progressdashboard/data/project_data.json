@@ -1,7 +1,81 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T01:54:01.039Z",
+  "lastUpdated": "2025-11-07T02:34:55.813Z",
   "overallProgress": 0,
-  "phases": [],
-  "needsAction": []
+  "phases": [
+    {
+      "name": "FASE 0 – MVS",
+      "tasks": [
+        {
+          "name": "Arquitectura GCP + Firebase",
+          "completed": false
+        },
+        {
+          "name": "Pipeline de Ingesta y OCR",
+          "completed": false
+        },
+        {
+          "name": "Panel Médico MVS",
+          "completed": false
+        }
+      ],
+      "totalTasks": 3,
+      "completedTasks": 0,
+      "progress": 0
+    },
+    {
+      "name": "FASE 1 – Piloto",
+      "tasks": [
+        {
+          "name": "Ingesta automática + Semáforos",
+          "completed": false
+        },
+        {
+          "name": "Dashboard Operativo y Bitácora",
+          "completed": false
+        }
+      ],
+      "totalTasks": 2,
+      "completedTasks": 0,
+      "progress": 0
+    },
+    {
+      "name": "FASE 2 – Consolidación",
+      "tasks": [
+        {
+          "name": "Integraciones ECG/Campimetría/Toxicológico",
+          "completed": false
+        },
+        {
+          "name": "Gobierno de datos y roles multi-sede",
+          "completed": false
+        }
+      ],
+      "totalTasks": 2,
+      "completedTasks": 0,
+      "progress": 0
+    },
+    {
+      "name": "FASE 3 – Producción",
+      "tasks": [
+        {
+          "name": "Operación comercial y SLA",
+          "completed": false
+        }
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "progress": 0
+    }
+  ],
+  "needsAction": [
+    "Arquitectura GCP + Firebase: Aprobación de presupuesto GCP y cuentas de servicio.",
+    "Pipeline de Ingesta y OCR: PDFs con sello médico y rangos de referencia validados.",
+    "Panel Médico MVS: Wireframes finales y usuarios médicos confirmados.",
+    "Ingesta automática + Semáforos: Acceso a carpeta compartida y responsables de observabilidad.",
+    "Dashboard Operativo y Bitácora: KPIs definidos y dataset de auditoría aprobado.",
+    "Integraciones ECG/Campimetría/Toxicológico: Estudios de muestra y médicos líderes por especialidad.",
+    "Gobierno de datos y roles multi-sede: Inventario de sedes/clientes y matriz de acceso aprobada.",
+    "Operación comercial y SLA: Catálogo de incidentes y runbooks por severidad."
+  ]
 }
