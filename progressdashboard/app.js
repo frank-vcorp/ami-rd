@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const overallProgressBar = document.getElementById("overall-progress-bar");
   const phasesContainer = document.getElementById("phases-container");
   const actionItemsEl = document.getElementById("action-items");
+  const statusBannerEl = document.getElementById("status-text");
 
   fetch("data/project_data.json")
     .then((response) => response.json())
     .then((data) => {
       renderOverall(data, lastUpdatedEl, overallProgressBar);
+      renderStatusBanner(data.phases || [], statusBannerEl);
       renderPhases(data.phases || [], phasesContainer);
       renderActions(data.needsAction || [], actionItemsEl);
     })
@@ -27,6 +29,28 @@ function renderOverall(data, lastUpdatedEl, overallProgressBar) {
     overallProgressBar.style.width = `${overall}%`;
     overallProgressBar.textContent = `${overall}%`;
   }
+}
+
+function renderStatusBanner(phases, bannerEl) {
+  if (!bannerEl) return;
+  const activePhase =
+    phases.find((phase) =>
+      (phase.modules || []).some((module) => module.status !== "done")
+    ) || phases[phases.length - 1];
+
+  if (!activePhase) {
+    bannerEl.textContent = "Sin datos del piloto aún.";
+    return;
+  }
+
+  const pendingCount = (activePhase.modules || []).filter(
+    (module) => module.status === "pending"
+  ).length;
+  const message =
+    pendingCount === 0
+      ? `${activePhase.name}: entregable listo y en validación.`
+      : `${activePhase.name}: ${pendingCount} módulo(s) en preparación.`;
+  bannerEl.textContent = message;
 }
 
 function renderPhases(phases, container) {
@@ -94,7 +118,7 @@ function renderActions(actions, container) {
     return;
   }
 
-  actions.forEach((item) => {
+  actions.slice(0, 5).forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `<strong>${item.module}</strong> (${item.phase}): ${item.detail}`;
     container.appendChild(li);
