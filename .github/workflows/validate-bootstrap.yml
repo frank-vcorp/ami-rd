@@ -62,13 +62,13 @@ jobs:
           ensure_dir .continue/assistants
 
           # Ensure files without overwriting existing ones
-          ensure_file ".gitignore" "$(cat <<'EOF' | sed -e 's/^ *//'
-            .env
-            node_modules/
-            dist/
-            .DS_Store
-            .vscode/
-            .idea/
+          ensure_file ".gitignore" "$(cat <<'EOF'
+.env
+node_modules/
+dist/
+.DS_Store
+.vscode/
+.idea/
 EOF
 )"
 
