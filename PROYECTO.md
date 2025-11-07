@@ -60,6 +60,13 @@ El backlog se alinea al cronograma comprometido con Alan (MVS semanas 1‑4, Pil
 - Estrategia de QA y despliegue (checkpoints, plan de pruebas, runbooks).  
 - Requests de legales/comerciales (contratos `context/03`, acuerdos con Alan).
 
+### Fase 0: Infraestructura y Visibilidad
+- [✓] (Integra) Crear un dashboard de progreso web.
+- [✓] (Integra) Configurar el parser de `PROYECTO.md` para generar datos de progreso.
+- [✓] (Integra) Implementar el frontend del dashboard con Tailwind CSS.
+- [✓] (Integra) Configurar la acción de GitHub para actualizar automáticamente los datos del dashboard.
+- [✓] (Integra) Configurar el despliegue automático en el servidor de Plesk.
+
 ## Próximas acciones inmediatas
 1. **Backlog → tareas JIRA/ClickUp:** crear tarjetas por US (US0.1–US0.8) con responsables y fechas comprometidas (Sem 1‑4).  
 2. **Infraestructura:** correr Terraform inicial + documentar emuladores en `README.md`.  
