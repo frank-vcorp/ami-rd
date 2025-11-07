@@ -54,6 +54,7 @@ El backlog se alinea al cronograma comprometido con Alan (MVS semanas 1‑4, Pil
 - **Fase 3 – Producción (24+):** SLA 24/7, FinOps, roadmap evolutivo (feature flags, mobile Expo), soporte comercial.
 
 ### Backlog auxiliar permanente
+- (Integra) Módulo de Dashboard de Avances: Crear un dashboard web auto-actualizable que refleje el estado de `PROYECTO.md`.
 - Sitio ligero de seguimiento para AMI (estado de módulos + carga de evidencia).  
 - Documentación continua (`context/04_Documentacion_Sintetica`, `RD-AMI_Paquete_MANUS`).  
 - Estrategia de QA y despliegue (checkpoints, plan de pruebas, runbooks).  
