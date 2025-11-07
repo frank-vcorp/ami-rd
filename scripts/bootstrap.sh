@@ -4,8 +4,8 @@ set -euo pipefail
 # Usage:
 #   ./scripts/bootstrap.sh <CLIENT> <PROJECT> [--origin <URL>|--origin=<URL>] [--push]
 
-CLIENT=${1:-Farienergy}
-PROJECT=${2:-Aplicacion}
+CLIENT=${1:-AMI}
+PROJECT=${2:-RD-Residente-Digital}
 # Shift positional args safely (honors set -u)
 if [ $# -ge 1 ]; then shift || true; fi
 if [ $# -ge 1 ]; then shift || true; fi

@@ -1,6 +1,6 @@
 Param(
-  [string]$Client = "Farienergy",
-  [string]$Project = "Aplicacion",
+  [string]$Client = "AMI",
+  [string]$Project = "RD-Residente-Digital",
   [string]$Origin = "",
   [switch]$Push
 )

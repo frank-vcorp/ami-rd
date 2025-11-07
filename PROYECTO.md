@@ -17,40 +17,64 @@ Implementar el **Residente Digital con IA (RD-AMI)** para automatizar la ingesta
 | FASE 2 – Consolidación (Sem 12-24) | Versión institucional lista para operación | Integraciones ECG/Campimetría/Toxicológico, roles multi-sede, dashboard ejecutivo, documentación y despliegue estable en GCP | Planeado |
 | FASE 3 – Producción (24+) | Operación comercial y SLA | Monitoreo 24/7, mantenimiento evolutivo, roadmap de mejoras | Planeado |
 
-## Backlog técnico priorizado
+## Backlog técnico priorizado (Integra Evolucionada)
 
-### Núcleo Plataforma
-1. **Arquitectura Google Cloud**  
-   - Provisión de proyecto GCP/Firebase, Firestore, Cloud Storage y Pub/Sub.  
-   - Hardening de IAM y redes, lineamientos de cifrado y ubicaciones.
-2. **Ingesta inteligente**  
-   - Watcher en Cloud Run/Functions para carpetas SFTP/GCS.  
-   - Control de duplicados por hash y normalización de metadatos.
-3. **OCR + Parsing**  
-   - Canal Python (Document AI/`pdfminer`) con plantillas por estudio.  
-   - Mecanismo de versionado y pruebas con PDFs reales de AMI.
-4. **Normalizador y reglas clínicas**  
-   - Diccionarios de unidades y rangos.  
-   - Motor declarativo (JSON Rules) desplegado como servicio serverless.
-5. **Panel médico Next.js**  
-   - UI shadcn/ui + Tailwind.  
-   - Integración con Firebase Auth (roles Médico, Calidad, Admin).
-6. **Generación/entrega de PDFs**  
-   - Servicio Node en Cloud Run con plantillas institucionales.  
-   - Enlaces firmados y caducables vía Cloud Storage + Cloud Functions.
-7. **Observabilidad y métricas**  
-   - Bitácora estructurada en Firestore/BigQuery.  
-   - Dashboards operativos (Looker Studio o Data Studio).
+El backlog se alinea al cronograma comprometido con Alan (MVS semanas 1‑4, Piloto semanas 5‑12) y se estructura por épicas/US con criterios de aceptación (CA) y checklists de calidad (CQ). Cada historia debe registrar bitácora y pruebas asociadas antes de moverse a “Done”.
 
-### Hitos auxiliares
-- Sitio ligero de seguimiento (estado de módulos + carga de docs solicitados al cliente).  
-- Documentación funcional/técnica en `context/04_Documentacion_Sintetica`.  
-- Estrategia de QA y despliegue (meta/checkpoints, plan de pruebas y runbooks).
+### FASE 0 – MVS (Semanas 1‑4)
+| Epic | User Story | Descripción | CA/CQ principales | ETA |
+|------|------------|-------------|-------------------|-----|
+| E0.1 Infraestructura lista | US0.1 – Como arquitecto quiero provisionar proyecto GCP/Firebase con IaC | Terraform + GitHub Actions crean proyecto, habilitan Firestore/Storage/Pub/Sub, IAM mínimo | CA: Terraform plan/apply aprobado, Firestore en modo native con reglas básicas, buckets con CMEK; CQ: checklist seguridad inicial (cifrado, etiquetas de costo) | Semana 1 |
+| | US0.2 – Como dev necesito emuladores locales | Configurar Firebase Emulator Suite (Auth/Firestore/Functions) + contenedores OCR para dev offline | CA: scripts `npm run dev:emulators`, documentación en README; CQ: pruebas smoke locales | Semana 1 |
+| E0.2 Ingesta manual controlada | US0.3 – Como operador quiero subir PDFs y generar folio | UI/CLI que sube a GCS, calcula hash y emite evento Pub/Sub con metadatos Empresa→Paciente→Orden→Estudio→Fecha | CA: folio único en Firestore, duplicado bloqueado, bitácora del evento; CQ: prueba con expediente demo AMI | Semana 2 |
+| E0.3 Parsing + Normalización base | US0.4 – Como sistema necesito extraer datos Lab/RX/Audiometría/Espirometría de PDFs nativos | Servicio Python (Document AI/pdfminer) que aplica plantillas Manus y genera JSON normalizado | CA: ≥85 % campos cubiertos en dataset demo, logs por ancla, versionado de plantilla; CQ: pruebas unitarias por extractor usando `02_MAPEO` | Semana 2 |
+| | US0.5 – Como médico quiero ver semáforos preliminares | Motor JSON Rules (umbrales Manus) genera semáforos por parámetro + dictamen sugerido | CA: reglas Hb/FVC/RX/Riesgo CV cargadas; CQ: simulaciones documentadas (verde/ámbar/rojo) | Semana 3 |
+| E0.4 Panel médico v0 | US0.6 – Como médico validador quiero revisar y editar datos extraídos | Next.js + Firebase Auth muestra PDF vs datos y permite ajustes/observaciones | CA: login médico habilitado, edición con bitácora, estado `Validación pendiente`; CQ: pruebas E2E Playwright (flujo single expediente) | Semana 3 |
+| E0.5 Emisión y Papeleta | US0.7 – Como médico quiero emitir reporte + papeleta con QR | Servicio Node/Cloud Run genera PDFs institucional y papeleta (especificación Manus) tras firma | CA: QR apunta a URL caducable, reimpresión registrada, templates responsive; CQ: checklist Papeleta (`PAPELETA_spec.md`) | Semana 4 |
+| E0.6 Observabilidad mínima | US0.8 – Como líder quiero rastrear cada expediente | Bitácora estructurada (Firestore/BigQuery) con traceId=folio, export a Looker sheet | CA: logs ingestion→emisión, alerta básica (Pub/Sub DLQ); CQ: reporte diario MVS | Semana 4 |
+
+**Checklist Fase 0:** expediente demo procesado end-to-end, métricas base (TAT, precisión extracción), walkthrough con AMI agendado.
+
+### FASE 1 – Piloto Operativo (Semanas 5‑12)
+| Epic | User Story | Descripción | CA/CQ principales | ETA |
+|------|------------|-------------|-------------------|-----|
+| E1.1 Ingesta automatizada | US1.1 – Como operador quiero watchers SFTP/carpeta | Cloud Functions/Eventarc detectan nuevos archivos, aplican control de duplicados y encolan trabajo | CA: soporte SFTP + carpeta local, DLQ activa, alertas de falla; CQ: prueba con >5 archivos simultáneos | Sem 5 |
+| E1.2 Normalizador & reglas avanzadas | US1.2 – Como especialista quiero mapear todos los módulos (incl. risco CV, toxicológico) | Diccionarios de unidades y catálogos cargados desde `Mapa_Campos_Sistema_AMI_RD.xlsx` | CA: 100 % campos críticos mapeados; CQ: reportes de cobertura por módulo | Sem 6 |
+| | US1.3 – Como médico deseo calibrar reglas clínicamente | UI para versionar reglas y simular cambios antes de publicar | CA: historial de versiones, rollback, semáforo global; CQ: aprobación médico líder | Sem 6 |
+| E1.3 Panel médico v1 | US1.4 – Como médico necesito bandeja de expedientes y filtros | Dashboard Next.js con estados (Ingesta→Entrega), filtros por empresa/sede, comentarios | CA: cola con SLA visual, edición colaborativa; CQ: pruebas de concurrencia | Sem 7 |
+| E1.4 Dashboard & métricas | US1.5 – Como dirección quiero ver KPIs (TAT, rechazo, precisión) | ETL Firestore→BigQuery→Looker Studio con panel operativo | CA: KPIs diarios, export PDF semanal; CQ: validación con Alan | Sem 8 |
+| E1.5 Entrega segura y bitácora | US1.6 – Como cliente quiero recibir enlaces caducables | Signed URLs + SendGrid, registro IP/usuario/fecha | CA: caducidad configurable, reenvíos auditados; CQ: prueba antifraude (QR) | Sem 8 |
+| E1.6 QA/Mantenimiento | US1.7 – Como equipo necesito suites de pruebas y runbooks | Playwright E2E, Jest/Pytest unit, runbook incidentes, checklist Integra Evolucionada | CA: pipelines CI con coverage report, runbook publicado; CQ: simulacro de incidente | Sem 9-10 |
+| E1.7 Dataset real | US1.8 – Como médico quiero validar con 10 expedientes reales | Carga anonimizada, seguimiento de ajustes post-validación, métricas de concordancia identidad | CA: 10 expedientes con dictamen final firmado; CQ: reporte comparativo (IA vs humano) | Sem 11-12 |
+
+**Checklist Fase 1:** 10 expedientes reales procesados, métricas piloto entregadas a AMI, retroalimentación clínica integrada.
+
+### FASE 2 y 3 (resumen)
+- **Fase 2 – Consolidación (Sem 12‑24):** integrar ECG/Campimetría/Toxicológico, roles multi-sede, DRP/RPO 24 h, documentación NOM/LFPDPPP, observabilidad avanzada, CI/CD completo.  
+- **Fase 3 – Producción (24+):** SLA 24/7, FinOps, roadmap evolutivo (feature flags, mobile Expo), soporte comercial.
+
+### Backlog auxiliar permanente
+- Sitio ligero de seguimiento para AMI (estado de módulos + carga de evidencia).  
+- Documentación continua (`context/04_Documentacion_Sintetica`, `RD-AMI_Paquete_MANUS`).  
+- Estrategia de QA y despliegue (checkpoints, plan de pruebas, runbooks).  
+- Requests de legales/comerciales (contratos `context/03`, acuerdos con Alan).
 
 ## Próximas acciones inmediatas
-1. Afinar plan técnico por fase (documento en `context/Plan_Ejecucion_RD-AMI.md`).  
-2. Socializar con AMI el tablero de avance y habilitarles carga de evidencia.  
-3. Configurar proyecto Firebase (staging) y credenciales locales para el equipo.
+1. **Backlog → tareas JIRA/ClickUp:** crear tarjetas por US (US0.1–US0.8) con responsables y fechas comprometidas (Sem 1‑4).  
+2. **Infraestructura:** correr Terraform inicial + documentar emuladores en `README.md`.  
+3. **Plan con AMI:** compartir backlog y cronograma con Alan, agendar demo MVS (semana 4) y checkpoint piloto (semana 8).
+
+### Tarjetas de trabajo (Sem 1‑4)
+| ID | Descripción | Owner | Estatus |
+|----|-------------|-------|---------|
+| US0.1 | Provisionar proyecto GCP/Firebase con Terraform (APIs, Firestore, Storage, Pub/Sub, SA). | Sofía | En progreso |
+| US0.2 | Configurar DevEx local (Firebase Emulator Suite, contenedores OCR) y documentar comandos. | Sofía | Pendiente |
+| US0.3 | Ingesta manual → GCS+Pub/Sub con folio único y bitácora. | Sofía | Pendiente |
+| US0.4 | Extractores OCR base (Lab/RX/Audiometría/Espirometría) con JSON normalizado. | Inés | Pendiente |
+| US0.5 | Motor de reglas (Hb, FVC, RX, Riesgo CV) con simulaciones. | Inés | Pendiente |
+| US0.6 | Panel médico v0 (Next.js + Auth + visor PDF/datos). | Sofía | Pendiente |
+| US0.7 | Generador PDF institucional + Papeleta con QR caducable. | Inés | Pendiente |
+| US0.8 | Bitácora estructurada + métricas base (TAT, precisión extracción). | Nano | Pendiente |
 
 ## Trabajo técnico por fase
 
