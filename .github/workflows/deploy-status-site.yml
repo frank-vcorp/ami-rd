@@ -1,4 +1,4 @@
-name: Deploy Progress Dashboard
+name: Update Progress Dashboard Data
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - 'PROYECTO.md'
 
 jobs:
-  deploy:
+  update-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,18 +21,14 @@ jobs:
         node-version: '18'
 
     - name: Generate project data
+      id: generate_data
       run: node progressdashboard/parser.js
 
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+    - name: Commit and push if data changed
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /vcorp.mx/ami/progressdashboard/
-        local-dir: ./progressdashboard/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          parser.js
+        commit_message: 'chore(data): Auto-update progress dashboard data'
+        file_pattern: 'progressdashboard/data/project_data.json'
+        commit_user_name: 'GitHub Actions Bot'
+        commit_user_email: 'actions@github.com'
+        commit_author: 'GitHub Actions Bot <actions@github.com>'
