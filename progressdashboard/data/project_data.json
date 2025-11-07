@@ -1,12 +1,12 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T04:52:12.687Z",
-  "overallProgress": 5.2631578947368425,
+  "lastUpdated": "2025-11-07T04:54:44.380Z",
+  "overallProgress": 5,
   "phases": [
     {
       "name": "FASE 0 – MVS",
       "order": 0,
-      "progress": 9.090909090909092,
+      "progress": 12.5,
       "modules": [
         {
           "id": "fase0-dashboard",
@@ -45,15 +45,6 @@
           "needs": "Wireframes finales y usuarios médicos confirmados."
         },
         {
-          "id": "fase0-papeleta",
-          "name": "Generación de Papeleta",
-          "owner": "Backend · Frontend",
-          "status": "pending",
-          "progress": 0,
-          "summary": "Plantilla PDF con folio/QR, restricciones y firmas; integración con panel. Entregable: primer PDF institucional descargable.",
-          "needs": "Plantilla validada por AMI y datos de ejemplo."
-        },
-        {
           "id": "fase0-ui-dashboard",
           "name": "UI Dashboard (KPIs)",
           "owner": "Frontend",
@@ -72,45 +63,27 @@
           "needs": "Campos definitivos y catálogo de estudios."
         },
         {
-          "id": "fase0-ui-examen",
-          "name": "UI Examen Médico",
-          "owner": "Frontend",
+          "id": "fase0-papeleta",
+          "name": "Generación de Papeleta",
+          "owner": "Backend · Frontend",
           "status": "pending",
           "progress": 0,
-          "summary": "Captura de signos vitales, somatometría y observaciones (layouts responsivos). Entregable: pestaña Examen Médico funcional.",
-          "needs": "Lista de campos y rangos confirmados por AMI."
+          "summary": "Plantilla PDF con folio/QR, restricciones y firmas; integración con panel. Entregable: primer PDF institucional descargable.",
+          "needs": "Plantilla validada por AMI y datos de ejemplo."
         },
         {
-          "id": "fase0-ui-estudios",
-          "name": "UI Estudios (SIM/NOVA)",
-          "owner": "Frontend",
+          "id": "fase0-ingesta-demo",
+          "name": "Demo de Ingesta y Watcher",
+          "owner": "Backend",
           "status": "pending",
           "progress": 0,
-          "summary": "Drag & drop de archivos, barra de progreso y tarjetas de resultados simulados. Entregable: componente de carga + tabla de resultados.",
-          "needs": "Lista de estudios y archivos de ejemplo."
-        },
-        {
-          "id": "fase0-ui-validacion",
-          "name": "UI Validación Médica",
-          "owner": "Frontend",
-          "status": "pending",
-          "progress": 0,
-          "summary": "Vista lado-a-lado PDF/datos, edición rápida y semáforos por parámetro. Entregable: flujo completo de validación listo para pruebas.",
-          "needs": "Reglas de semáforo y permisos de usuario médico."
-        },
-        {
-          "id": "fase0-ui-reportes",
-          "name": "UI Reportes y Envío",
-          "owner": "Frontend",
-          "status": "pending",
-          "progress": 0,
-          "summary": "Pantalla para generar/descargar reportes completos, enviar por correo y ver logs. Entregable: pestaña Reportes con acciones disponibles.",
-          "needs": "Plantillas de correo y textos de notificación."
+          "summary": "Script/manual para subir 1 expediente (arrastrar y ver JSON) con logs básicos. Entregable: demo grabada y evidencia en context/.",
+          "needs": "PDFs de referencia y credenciales de prueba."
         }
       ],
       "statusCounts": {
         "done": 1,
-        "pending": 10
+        "pending": 7
       }
     },
     {
@@ -155,6 +128,42 @@
           "needs": "Flujo de citas aprobado y responsables operativos."
         },
         {
+          "id": "fase1-ui-examen",
+          "name": "UI Examen Médico",
+          "owner": "Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Captura de signos vitales, somatometría y observaciones (layouts responsivos) con datos reales. Entregable: pestaña Examen Médico conectada al backend.",
+          "needs": "Lista de campos y rangos confirmados por AMI."
+        },
+        {
+          "id": "fase1-ui-estudios",
+          "name": "UI Estudios (SIM/NOVA)",
+          "owner": "Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Drag & drop de archivos, barra de progreso y tarjetas de resultados reales. Entregable: componente de carga + tabla de resultados ligada al pipeline.",
+          "needs": "Lista de estudios y archivos reales."
+        },
+        {
+          "id": "fase1-ui-validacion",
+          "name": "UI Validación Médica",
+          "owner": "Frontend · Backend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Vista lado-a-lado PDF/datos con edición y semáforos alimentados por IA. Entregable: flujo de validación listo para médicos en pruebas.",
+          "needs": "Reglas de semáforo y permisos de usuario médico."
+        },
+        {
+          "id": "fase1-ui-reportes",
+          "name": "UI Reportes y Envío",
+          "owner": "Frontend · Backend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Pantalla para generar/descargar reportes completos, enviar por correo y ver logs con datos reales. Entregable: pestaña Reportes conectada al generador PDF.",
+          "needs": "Plantillas de correo y textos de notificación."
+        },
+        {
           "id": "fase1-alertas",
           "name": "Configuración de Alertas/Notificaciones",
           "owner": "Backend · Frontend",
@@ -165,7 +174,7 @@
         }
       ],
       "statusCounts": {
-        "pending": 5
+        "pending": 9
       }
     },
     {
@@ -238,11 +247,6 @@
       "detail": "Wireframes finales y usuarios médicos confirmados."
     },
     {
-      "module": "Generación de Papeleta",
-      "phase": "FASE 0 – MVS",
-      "detail": "Plantilla validada por AMI y datos de ejemplo."
-    },
-    {
       "module": "UI Dashboard (KPIs)",
       "phase": "FASE 0 – MVS",
       "detail": "Texto/copy aprobado y métricas dummy."
@@ -253,24 +257,14 @@
       "detail": "Campos definitivos y catálogo de estudios."
     },
     {
-      "module": "UI Examen Médico",
+      "module": "Generación de Papeleta",
       "phase": "FASE 0 – MVS",
-      "detail": "Lista de campos y rangos confirmados por AMI."
+      "detail": "Plantilla validada por AMI y datos de ejemplo."
     },
     {
-      "module": "UI Estudios (SIM/NOVA)",
+      "module": "Demo de Ingesta y Watcher",
       "phase": "FASE 0 – MVS",
-      "detail": "Lista de estudios y archivos de ejemplo."
-    },
-    {
-      "module": "UI Validación Médica",
-      "phase": "FASE 0 – MVS",
-      "detail": "Reglas de semáforo y permisos de usuario médico."
-    },
-    {
-      "module": "UI Reportes y Envío",
-      "phase": "FASE 0 – MVS",
-      "detail": "Plantillas de correo y textos de notificación."
+      "detail": "PDFs de referencia y credenciales de prueba."
     },
     {
       "module": "Ingesta automática + Semáforos",
@@ -291,6 +285,26 @@
       "module": "Agenda y Citas",
       "phase": "FASE 1 – Piloto",
       "detail": "Flujo de citas aprobado y responsables operativos."
+    },
+    {
+      "module": "UI Examen Médico",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Lista de campos y rangos confirmados por AMI."
+    },
+    {
+      "module": "UI Estudios (SIM/NOVA)",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Lista de estudios y archivos reales."
+    },
+    {
+      "module": "UI Validación Médica",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Reglas de semáforo y permisos de usuario médico."
+    },
+    {
+      "module": "UI Reportes y Envío",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Plantillas de correo y textos de notificación."
     },
     {
       "module": "Configuración de Alertas/Notificaciones",
