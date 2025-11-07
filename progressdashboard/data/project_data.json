@@ -1,7 +1,7 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T04:57:27.939Z",
-  "overallProgress": 5,
+  "lastUpdated": "2025-11-07T05:05:27.441Z",
+  "overallProgress": 3.8461538461538463,
   "phases": [
     {
       "name": "FASE 0 – MVS",
@@ -199,10 +199,37 @@
           "progress": 0,
           "summary": "Ajustar accesos por sede/cliente y documentar planes de recuperación. Entregable: matriz de roles/aprobaciones y plan DR (Sem 14+).",
           "needs": "Inventario de sedes/clientes y matriz de acceso aprobada."
+        },
+        {
+          "id": "fase2-identidad",
+          "name": "Consolidador de identidad multifuente",
+          "owner": "Backend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Resolver duplicados entre SIM/estudios y garantizar folio único por Empresa–Paciente–Orden–Estudio. Entregable: módulo de reconciliación con reportes de coincidencia.",
+          "needs": "Datos de pacientes y reglas de negocio acordadas."
+        },
+        {
+          "id": "fase2-bitacora",
+          "name": "Bitácora avanzada y auditoría",
+          "owner": "Data · Backend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Guardar cada acción (quién/qué/cuándo/IP) y exponer filtros/exportación para auditores. Entregable: vista Bitácora con export CSV/PDF.",
+          "needs": "Requisitos NOM/LFPDPPP aprobados."
+        },
+        {
+          "id": "fase2-capacitacion",
+          "name": "Capacitación y manuales",
+          "owner": "Operaciones",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Manuales de uso (médico, capturista, cliente) + sesiones de entrenamiento. Entregable: wiki/documentación y constancias de capacitación.",
+          "needs": "Agenda con el equipo médico/operativo."
         }
       ],
       "statusCounts": {
-        "pending": 2
+        "pending": 5
       }
     },
     {
@@ -218,10 +245,37 @@
           "progress": 0,
           "summary": "Formalizar soporte 24/7 y runbooks para escalar comercialmente. Entregable: paquete SLA + runbook operativo.",
           "needs": "Catálogo de incidentes y runbooks por severidad."
+        },
+        {
+          "id": "fase3-monitoreo",
+          "name": "Monitoreo y soporte 24/7",
+          "owner": "DevOps · Operaciones",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Dashboards de salud (errores, costos, colas) + alertas hacia on-call. Entregable: tablero NOC + integración Slack/correo.",
+          "needs": "Límites de costos y métricas críticas acordadas."
+        },
+        {
+          "id": "fase3-finops",
+          "name": "Control de costos (FinOps)",
+          "owner": "Data · Finanzas",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Reporte mensual por expediente/cliente y alertas de consumo cloud. Entregable: panel FinOps compartido con AMI.",
+          "needs": "Catálogo de costos y responsables financieros."
+        },
+        {
+          "id": "fase3-roadmap",
+          "name": "Roadmap evolutivo",
+          "owner": "Producto",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Definir mejoras iterativas (mobile, insights IA) con prioridades y releases. Entregable: roadmap trimestral validado con AMI.",
+          "needs": "Sesión de planeación conjunta."
         }
       ],
       "statusCounts": {
-        "pending": 1
+        "pending": 4
       }
     }
   ],
@@ -322,9 +376,39 @@
       "detail": "Inventario de sedes/clientes y matriz de acceso aprobada."
     },
     {
+      "module": "Consolidador de identidad multifuente",
+      "phase": "FASE 2 – Consolidación",
+      "detail": "Datos de pacientes y reglas de negocio acordadas."
+    },
+    {
+      "module": "Bitácora avanzada y auditoría",
+      "phase": "FASE 2 – Consolidación",
+      "detail": "Requisitos NOM/LFPDPPP aprobados."
+    },
+    {
+      "module": "Capacitación y manuales",
+      "phase": "FASE 2 – Consolidación",
+      "detail": "Agenda con el equipo médico/operativo."
+    },
+    {
       "module": "Operación comercial y SLA",
       "phase": "FASE 3 – Producción",
       "detail": "Catálogo de incidentes y runbooks por severidad."
+    },
+    {
+      "module": "Monitoreo y soporte 24/7",
+      "phase": "FASE 3 – Producción",
+      "detail": "Límites de costos y métricas críticas acordadas."
+    },
+    {
+      "module": "Control de costos (FinOps)",
+      "phase": "FASE 3 – Producción",
+      "detail": "Catálogo de costos y responsables financieros."
+    },
+    {
+      "module": "Roadmap evolutivo",
+      "phase": "FASE 3 – Producción",
+      "detail": "Sesión de planeación conjunta."
     }
   ]
 }
