@@ -21,6 +21,8 @@ Implementar el **Residente Digital con IA (RD-AMI)** para automatizar la ingesta
 
 El backlog se alinea al cronograma comprometido con Alan (MVS semanas 1‑4, Piloto semanas 5‑12) y se estructura por épicas/US con criterios de aceptación (CA) y checklists de calidad (CQ). Cada historia debe registrar bitácora y pruebas asociadas antes de moverse a “Done”.
 
+> Nota: Estas etapas y tareas son las planeadas a partir del demo y el cronograma vigente. Es probable que surjan ajustes o nuevos entregables conforme avancemos; cualquier cambio se documentará y se agregará aquí oportunamente para mantener trazabilidad con AMI.
+
 ### FASE 0 – MVS (Semanas 1‑4)
 | Epic | User Story | Descripción | CA/CQ principales | ETA |
 |------|------------|-------------|-------------------|-----|
