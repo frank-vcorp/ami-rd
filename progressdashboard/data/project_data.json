@@ -1,29 +1,38 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T03:44:19.894Z",
-  "overallProgress": 12.222222222222221,
+  "lastUpdated": "2025-11-07T03:58:03.600Z",
+  "overallProgress": 11.11111111111111,
   "phases": [
     {
       "name": "FASE 0 – MVS",
       "order": 0,
-      "progress": 26.25,
+      "progress": 25,
       "modules": [
+        {
+          "id": "fase0-dashboard",
+          "name": "Progreso AMI Dashboard",
+          "owner": "Frontend",
+          "status": "done",
+          "progress": 100,
+          "summary": "Parser + frontend Tailwind para https://vcorp.mx/progress-ami/progressdashboard/. Tiempo: en tiempo (Sem 1–2).",
+          "needs": "Endpoint actualizado con datos reales del backlog."
+        },
         {
           "id": "fase0-arquitectura",
           "name": "Arquitectura GCP + Firebase",
           "owner": "Arquitectura",
-          "status": "progress",
-          "progress": 45,
-          "summary": "Provisionar proyecto GCP/Firebase, Firestore, Storage e IAM base.",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Provisionar proyecto GCP/Firebase, Firestore, Storage e IAM base. Tiempo: en espera de aprobación (Sem 1–2).",
           "needs": "Aprobación de presupuesto GCP y cuentas de servicio."
         },
         {
           "id": "fase0-ocr",
           "name": "Pipeline de Ingesta y OCR",
           "owner": "Backend · Data",
-          "status": "progress",
-          "progress": 30,
-          "summary": "Watcher manual y pipeline Document AI/PyMuPDF para Laboratorio, RX, Audiometría y Espirometría.",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Watcher manual y pipeline Document AI/PyMuPDF para Laboratorio, RX, Audiometría y Espirometría. Tiempo: en espera de aprobación (Sem 1–2).",
           "needs": "PDFs con sello médico y rangos de referencia validados."
         },
         {
@@ -31,37 +40,28 @@
           "name": "Panel Médico MVS",
           "owner": "Frontend",
           "status": "pending",
-          "progress": 10,
-          "summary": "Next.js + Firebase Auth con vista básica de validación y emisión de PDF.",
+          "progress": 0,
+          "summary": "Next.js + Firebase Auth con vista básica de validación y emisión de PDF. Tiempo: aún no iniciado (Sem 3).",
           "needs": "Wireframes finales y usuarios médicos confirmados."
-        },
-        {
-          "id": "fase0-dashboard",
-          "name": "Progreso AMI Dashboard",
-          "owner": "Frontend",
-          "status": "progress",
-          "progress": 20,
-          "summary": "Parser + frontend Tailwind para https://vcorp.mx/progress-ami/progressdashboard/.",
-          "needs": "Endpoint actualizado con datos reales del backlog."
         }
       ],
       "statusCounts": {
-        "progress": 3,
-        "pending": 1
+        "done": 1,
+        "pending": 3
       }
     },
     {
       "name": "FASE 1 – Piloto",
       "order": 1,
-      "progress": 2.5,
+      "progress": 0,
       "modules": [
         {
           "id": "fase1-ingesta-automatica",
           "name": "Ingesta automática + Semáforos",
           "owner": "Backend",
           "status": "pending",
-          "progress": 5,
-          "summary": "Monitoreo SFTP/Eventarc, control de duplicados y motor de reglas declarativo.",
+          "progress": 0,
+          "summary": "Monitoreo SFTP/Eventarc, control de duplicados y motor de reglas declarativo. Tiempo: en espera de contrato (Sem 5–6).",
           "needs": "Acceso a carpeta compartida y responsables de observabilidad."
         },
         {
@@ -70,7 +70,7 @@
           "owner": "Data",
           "status": "pending",
           "progress": 0,
-          "summary": "Métricas TAT, rechazo y reprocesos con Looker Studio sobre BigQuery.",
+          "summary": "Métricas TAT, rechazo y reprocesos con Looker Studio sobre BigQuery. Tiempo: en espera de contrato (Sem 7–8).",
           "needs": "KPIs definidos y dataset de auditoría aprobado."
         }
       ],
@@ -89,7 +89,7 @@
           "owner": "Data · Backend",
           "status": "pending",
           "progress": 0,
-          "summary": "Nuevas plantillas de extracción, validación clínica y versionado de reglas.",
+          "summary": "Nuevas plantillas de extracción, validación clínica y versionado de reglas. Tiempo: fuera de alcance inmediato (Sem 12+).",
           "needs": "Estudios de muestra y médicos líderes por especialidad."
         },
         {
@@ -98,7 +98,7 @@
           "owner": "Arquitectura",
           "status": "pending",
           "progress": 0,
-          "summary": "Custom Claims, segregación por empresa, DRP y documentación NOM/LFPDPPP.",
+          "summary": "Custom Claims, segregación por empresa, DRP y documentación NOM/LFPDPPP. Tiempo: fuera de alcance inmediato (Sem 14+).",
           "needs": "Inventario de sedes/clientes y matriz de acceso aprobada."
         }
       ],
@@ -117,7 +117,7 @@
           "owner": "Operaciones",
           "status": "pending",
           "progress": 0,
-          "summary": "SLA activo, monitoreo 24/7 y mantenimiento evolutivo.",
+          "summary": "SLA activo, monitoreo 24/7 y mantenimiento evolutivo. Tiempo: posterior al piloto.",
           "needs": "Catálogo de incidentes y runbooks por severidad."
         }
       ],
@@ -127,6 +127,11 @@
     }
   ],
   "needsAction": [
+    {
+      "module": "Progreso AMI Dashboard",
+      "phase": "FASE 0 – MVS",
+      "detail": "Endpoint actualizado con datos reales del backlog."
+    },
     {
       "module": "Arquitectura GCP + Firebase",
       "phase": "FASE 0 – MVS",
@@ -141,11 +146,6 @@
       "module": "Panel Médico MVS",
       "phase": "FASE 0 – MVS",
       "detail": "Wireframes finales y usuarios médicos confirmados."
-    },
-    {
-      "module": "Progreso AMI Dashboard",
-      "phase": "FASE 0 – MVS",
-      "detail": "Endpoint actualizado con datos reales del backlog."
     },
     {
       "module": "Ingesta automática + Semáforos",
