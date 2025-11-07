@@ -1,7 +1,7 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T04:46:20.210Z",
-  "overallProgress": 5.882352941176471,
+  "lastUpdated": "2025-11-07T04:49:43.050Z",
+  "overallProgress": 5.2631578947368425,
   "phases": [
     {
       "name": "FASE 0 – MVS",
@@ -144,10 +144,28 @@
           "progress": 0,
           "summary": "UI para empresas (listado de expedientes, enlaces caducables, descarga PDF/zip). Entregable: portal accesible por empresa piloto.",
           "needs": "Lista de usuarios/clientes y reglas de caducidad aprobadas."
+        },
+        {
+          "id": "fase1-citas",
+          "name": "Agenda y Citas",
+          "owner": "Operaciones · Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Calendario para registrar citas por empresa/paciente, recordatorios y control de asistencia. Entregable: vista Agenda con confirmaciones automáticas.",
+          "needs": "Flujo de citas aprobado y responsables operativos."
+        },
+        {
+          "id": "fase1-alertas",
+          "name": "Configuración de Alertas/Notificaciones",
+          "owner": "Backend · Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Motor para definir notificaciones (correo/SMS) a pacientes, médicos y clientes (ej. “estudio cargado”, “dictamen listo”). Entregable: panel de configuración + disparos básicos.",
+          "needs": "Texto institucional y canales de envío autorizados."
         }
       ],
       "statusCounts": {
-        "pending": 3
+        "pending": 5
       }
     },
     {
@@ -268,6 +286,16 @@
       "module": "Portal de Clientes (Descarga/Links)",
       "phase": "FASE 1 – Piloto",
       "detail": "Lista de usuarios/clientes y reglas de caducidad aprobadas."
+    },
+    {
+      "module": "Agenda y Citas",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Flujo de citas aprobado y responsables operativos."
+    },
+    {
+      "module": "Configuración de Alertas/Notificaciones",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Texto institucional y canales de envío autorizados."
     },
     {
       "module": "Integraciones ECG/Campimetría/Toxicológico",
