@@ -62,7 +62,7 @@ jobs:
           ensure_dir .continue/assistants
 
           # Ensure files without overwriting existing ones
-          ensure_file ".gitignore" "$(cat <<-'EOF'
+          ensure_file ".gitignore" "$(cat <<'EOF'
 .env
 node_modules/
 dist/
