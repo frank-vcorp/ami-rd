@@ -1,12 +1,12 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T02:52:06.311Z",
-  "overallProgress": 11.25,
+  "lastUpdated": "2025-11-07T03:43:05.498Z",
+  "overallProgress": 12.222222222222221,
   "phases": [
     {
       "name": "FASE 0 – MVS",
       "order": 0,
-      "progress": 28.333333333333332,
+      "progress": 26.25,
       "modules": [
         {
           "id": "fase0-arquitectura",
@@ -34,10 +34,19 @@
           "progress": 10,
           "summary": "Next.js + Firebase Auth con vista básica de validación y emisión de PDF.",
           "needs": "Wireframes finales y usuarios médicos confirmados."
+        },
+        {
+          "id": "fase0-dashboard",
+          "name": "Progreso AMI Dashboard",
+          "owner": "Frontend",
+          "status": "progress",
+          "progress": 20,
+          "summary": "Parser + frontend Tailwind para https://vcorp.mx/progress-ami/progressdashboard/.",
+          "needs": "Endpoint actualizado con datos reales del backlog."
         }
       ],
       "statusCounts": {
-        "progress": 2,
+        "progress": 3,
         "pending": 1
       }
     },
@@ -132,6 +141,11 @@
       "module": "Panel Médico MVS",
       "phase": "FASE 0 – MVS",
       "detail": "Wireframes finales y usuarios médicos confirmados."
+    },
+    {
+      "module": "Progreso AMI Dashboard",
+      "phase": "FASE 0 – MVS",
+      "detail": "Endpoint actualizado con datos reales del backlog."
     },
     {
       "module": "Ingesta automática + Semáforos",
