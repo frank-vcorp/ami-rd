@@ -30,3 +30,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./progressdashboard/
           server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          log-level: all
