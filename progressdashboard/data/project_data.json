@@ -1,81 +1,162 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T02:34:55.813Z",
-  "overallProgress": 0,
+  "lastUpdated": "2025-11-07T02:52:06.311Z",
+  "overallProgress": 11.25,
   "phases": [
     {
       "name": "FASE 0 – MVS",
-      "tasks": [
+      "order": 0,
+      "progress": 28.333333333333332,
+      "modules": [
         {
+          "id": "fase0-arquitectura",
           "name": "Arquitectura GCP + Firebase",
-          "completed": false
+          "owner": "Arquitectura",
+          "status": "progress",
+          "progress": 45,
+          "summary": "Provisionar proyecto GCP/Firebase, Firestore, Storage e IAM base.",
+          "needs": "Aprobación de presupuesto GCP y cuentas de servicio."
         },
         {
+          "id": "fase0-ocr",
           "name": "Pipeline de Ingesta y OCR",
-          "completed": false
+          "owner": "Backend · Data",
+          "status": "progress",
+          "progress": 30,
+          "summary": "Watcher manual y pipeline Document AI/PyMuPDF para Laboratorio, RX, Audiometría y Espirometría.",
+          "needs": "PDFs con sello médico y rangos de referencia validados."
         },
         {
+          "id": "fase0-panel-medico",
           "name": "Panel Médico MVS",
-          "completed": false
+          "owner": "Frontend",
+          "status": "pending",
+          "progress": 10,
+          "summary": "Next.js + Firebase Auth con vista básica de validación y emisión de PDF.",
+          "needs": "Wireframes finales y usuarios médicos confirmados."
         }
       ],
-      "totalTasks": 3,
-      "completedTasks": 0,
-      "progress": 0
+      "statusCounts": {
+        "progress": 2,
+        "pending": 1
+      }
     },
     {
       "name": "FASE 1 – Piloto",
-      "tasks": [
+      "order": 1,
+      "progress": 2.5,
+      "modules": [
         {
+          "id": "fase1-ingesta-automatica",
           "name": "Ingesta automática + Semáforos",
-          "completed": false
+          "owner": "Backend",
+          "status": "pending",
+          "progress": 5,
+          "summary": "Monitoreo SFTP/Eventarc, control de duplicados y motor de reglas declarativo.",
+          "needs": "Acceso a carpeta compartida y responsables de observabilidad."
         },
         {
+          "id": "fase1-dashboard",
           "name": "Dashboard Operativo y Bitácora",
-          "completed": false
+          "owner": "Data",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Métricas TAT, rechazo y reprocesos con Looker Studio sobre BigQuery.",
+          "needs": "KPIs definidos y dataset de auditoría aprobado."
         }
       ],
-      "totalTasks": 2,
-      "completedTasks": 0,
-      "progress": 0
+      "statusCounts": {
+        "pending": 2
+      }
     },
     {
       "name": "FASE 2 – Consolidación",
-      "tasks": [
+      "order": 2,
+      "progress": 0,
+      "modules": [
         {
+          "id": "fase2-integraciones",
           "name": "Integraciones ECG/Campimetría/Toxicológico",
-          "completed": false
+          "owner": "Data · Backend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Nuevas plantillas de extracción, validación clínica y versionado de reglas.",
+          "needs": "Estudios de muestra y médicos líderes por especialidad."
         },
         {
+          "id": "fase2-roles",
           "name": "Gobierno de datos y roles multi-sede",
-          "completed": false
+          "owner": "Arquitectura",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Custom Claims, segregación por empresa, DRP y documentación NOM/LFPDPPP.",
+          "needs": "Inventario de sedes/clientes y matriz de acceso aprobada."
         }
       ],
-      "totalTasks": 2,
-      "completedTasks": 0,
-      "progress": 0
+      "statusCounts": {
+        "pending": 2
+      }
     },
     {
       "name": "FASE 3 – Producción",
-      "tasks": [
+      "order": 3,
+      "progress": 0,
+      "modules": [
         {
+          "id": "fase3-sla",
           "name": "Operación comercial y SLA",
-          "completed": false
+          "owner": "Operaciones",
+          "status": "pending",
+          "progress": 0,
+          "summary": "SLA activo, monitoreo 24/7 y mantenimiento evolutivo.",
+          "needs": "Catálogo de incidentes y runbooks por severidad."
         }
       ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "progress": 0
+      "statusCounts": {
+        "pending": 1
+      }
     }
   ],
   "needsAction": [
-    "Arquitectura GCP + Firebase: Aprobación de presupuesto GCP y cuentas de servicio.",
-    "Pipeline de Ingesta y OCR: PDFs con sello médico y rangos de referencia validados.",
-    "Panel Médico MVS: Wireframes finales y usuarios médicos confirmados.",
-    "Ingesta automática + Semáforos: Acceso a carpeta compartida y responsables de observabilidad.",
-    "Dashboard Operativo y Bitácora: KPIs definidos y dataset de auditoría aprobado.",
-    "Integraciones ECG/Campimetría/Toxicológico: Estudios de muestra y médicos líderes por especialidad.",
-    "Gobierno de datos y roles multi-sede: Inventario de sedes/clientes y matriz de acceso aprobada.",
-    "Operación comercial y SLA: Catálogo de incidentes y runbooks por severidad."
+    {
+      "module": "Arquitectura GCP + Firebase",
+      "phase": "FASE 0 – MVS",
+      "detail": "Aprobación de presupuesto GCP y cuentas de servicio."
+    },
+    {
+      "module": "Pipeline de Ingesta y OCR",
+      "phase": "FASE 0 – MVS",
+      "detail": "PDFs con sello médico y rangos de referencia validados."
+    },
+    {
+      "module": "Panel Médico MVS",
+      "phase": "FASE 0 – MVS",
+      "detail": "Wireframes finales y usuarios médicos confirmados."
+    },
+    {
+      "module": "Ingesta automática + Semáforos",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Acceso a carpeta compartida y responsables de observabilidad."
+    },
+    {
+      "module": "Dashboard Operativo y Bitácora",
+      "phase": "FASE 1 – Piloto",
+      "detail": "KPIs definidos y dataset de auditoría aprobado."
+    },
+    {
+      "module": "Integraciones ECG/Campimetría/Toxicológico",
+      "phase": "FASE 2 – Consolidación",
+      "detail": "Estudios de muestra y médicos líderes por especialidad."
+    },
+    {
+      "module": "Gobierno de datos y roles multi-sede",
+      "phase": "FASE 2 – Consolidación",
+      "detail": "Inventario de sedes/clientes y matriz de acceso aprobada."
+    },
+    {
+      "module": "Operación comercial y SLA",
+      "phase": "FASE 3 – Producción",
+      "detail": "Catálogo de incidentes y runbooks por severidad."
+    }
   ]
 }
