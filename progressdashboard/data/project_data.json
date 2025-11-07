@@ -1,12 +1,12 @@
 {
   "projectName": "RD-AMI Progress",
-  "lastUpdated": "2025-11-07T04:26:51.141Z",
-  "overallProgress": 11.11111111111111,
+  "lastUpdated": "2025-11-07T04:42:12.487Z",
+  "overallProgress": 9.090909090909092,
   "phases": [
     {
       "name": "FASE 0 – MVS",
       "order": 0,
-      "progress": 25,
+      "progress": 20,
       "modules": [
         {
           "id": "fase0-dashboard",
@@ -36,18 +36,27 @@
           "needs": "PDFs con sello médico y rangos de referencia validados."
         },
         {
-          "id": "fase0-panel-medico",
-          "name": "Panel Médico MVS",
+          "id": "fase0-panel-ui",
+          "name": "UI Panel Médico",
           "owner": "Frontend",
           "status": "pending",
           "progress": 0,
-          "summary": "Maqueta navegable para que los médicos revisen datos y emitan reporte. Entregable: prototipo Next.js para demo interna (Sem 3).",
+          "summary": "Diseñar formularios (recepción, signos, validación) y navegación en Next.js/shadcn. Entregable: prototipo navegable listo para feedback clínico.",
           "needs": "Wireframes finales y usuarios médicos confirmados."
+        },
+        {
+          "id": "fase0-papeleta",
+          "name": "Generación de Papeleta",
+          "owner": "Backend · Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "Plantilla PDF con folio/QR, restricciones y firmas; integración con panel. Entregable: primer PDF institucional descargable.",
+          "needs": "Plantilla validada por AMI y datos de ejemplo."
         }
       ],
       "statusCounts": {
         "done": 1,
-        "pending": 3
+        "pending": 4
       }
     },
     {
@@ -72,10 +81,19 @@
           "progress": 0,
           "summary": "Panel interno con métricas de TAT, rechazos y bitácora de acciones. Entregable: tablero Looker/Sheets compartido con AMI (Sem 7–8).",
           "needs": "KPIs definidos y dataset de auditoría aprobado."
+        },
+        {
+          "id": "fase1-portal-clientes",
+          "name": "Portal de Clientes (Descarga/Links)",
+          "owner": "Frontend",
+          "status": "pending",
+          "progress": 0,
+          "summary": "UI para empresas (listado de expedientes, enlaces caducables, descarga PDF/zip). Entregable: portal accesible por empresa piloto.",
+          "needs": "Lista de usuarios/clientes y reglas de caducidad aprobadas."
         }
       ],
       "statusCounts": {
-        "pending": 2
+        "pending": 3
       }
     },
     {
@@ -143,9 +161,14 @@
       "detail": "PDFs con sello médico y rangos de referencia validados."
     },
     {
-      "module": "Panel Médico MVS",
+      "module": "UI Panel Médico",
       "phase": "FASE 0 – MVS",
       "detail": "Wireframes finales y usuarios médicos confirmados."
+    },
+    {
+      "module": "Generación de Papeleta",
+      "phase": "FASE 0 – MVS",
+      "detail": "Plantilla validada por AMI y datos de ejemplo."
     },
     {
       "module": "Ingesta automática + Semáforos",
@@ -156,6 +179,11 @@
       "module": "Dashboard Operativo y Bitácora",
       "phase": "FASE 1 – Piloto",
       "detail": "KPIs definidos y dataset de auditoría aprobado."
+    },
+    {
+      "module": "Portal de Clientes (Descarga/Links)",
+      "phase": "FASE 1 – Piloto",
+      "detail": "Lista de usuarios/clientes y reglas de caducidad aprobadas."
     },
     {
       "module": "Integraciones ECG/Campimetría/Toxicológico",
